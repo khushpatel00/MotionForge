@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> </title>
+    <!-- <link rel="shortcut icon" href="" type="image/x-icon"> -->
+
+    <link rel="stylesheet" href="assets/output.css" />
+    <link rel="stylesheet" href="assets/fonts/style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body class="bg-black text-white">
+    <header class="bg-orange-700 p-3 relative flex items-center align-middle justify-center">
+        <div class="me-auto my-auto flex items-center">
+            <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
+        </div>
+        <div class="flex items-center px-3 justify-center text-center">
+            <h1 class="font-light text-2xl text-center transition-all duration-500">MotionForge</h1>
+        </div>
+        <div class="ms-auto my-auto flex items-center">
+            <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
+        </div>
+    </header>
+
+    <div id="playerContainer"
+        class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center p-3">
+        <audio id="currentPlayer" src="assets/audio/Sweden_C418.mp3" class="" controls hidden></audio>
+        <div class="flex p-2 px-5" style="transition: 0.3s all">
+            <div class="controls toggler" onclick="togglePlayer()">
+                <pre></pre>
+            </div>
+            <input type="range" min="0" max="100" value="0" id="playerSlider" />
+            <div class="duration" style="transition: 0.3s all">0</div>
+        </div>
+    </div>
+    <script src="assets/libs/script.js"></script>
+</body>
+
+</html>

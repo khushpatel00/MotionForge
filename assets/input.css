@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+* {
+    font-family: "poppins" !important;
+}
+
+.controls {
+    /* padding-right: 30px; */
+    font-family: "JetBrains Mono", monospace !important;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    /* Remove default styling */
+    width: 300px;
+    height: 8px;
+    display: flex;
+    background: linear-gradient(90deg, #ca3500 0%, #ddd 0%);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+    margin: auto 20px;
+}
+
+/* Track (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-runnable-track {
+    /* height: 8px; */
+    background: transparent;
+    border-radius: 5px;
+}
+
+/* Thumb (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Required! */
+    appearance: none;
+    margin: auto 0;
+    width: 15px;
+    height: 15px;
+    background: #ca3500;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    /* Align thumb vertically */
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #b12f00;
+    transform: scale(1.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    background: #f74200;
+    transform: scale(0.9);
+}
+
+/* Firefox support */
+input[type="range"]::-moz-range-track {
+    /* height: 8px; */
+    background: #ddd;
+    border-radius: 5px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    /* height: 20px; */
+    background: #ca3500;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    background: #ca3500;
+    transform: scale(1.1);
+}
