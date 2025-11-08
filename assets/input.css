@@ -10,16 +10,20 @@
 }
 
 input[type="range"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     -webkit-appearance: none;
     /* Remove default styling */
-    width: 300px;
-    height: 8px;
-    display: flex;
-    background: linear-gradient(90deg, #ca3500 0%, #ddd 0%);
+    width: 99dvw;
+    height: 1px;
+    /* display: flex; */
+    background: linear-gradient(90deg, #ca3500 50%, #ddd 50%);
     border-radius: 5px;
     outline: none;
-    transition: background 0.3s;
-    margin: auto 20px;
+    transition: background 0.1s;
+    margin: auto;
 }
 
 /* Track (Chrome, Safari, Edge) */

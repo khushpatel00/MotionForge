@@ -30,17 +30,27 @@
     </header>
 
     <div id="playerContainer"
-        class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center p-3">
-        <audio id="currentPlayer" src="assets/audio/Sweden_C418.mp3" class="" controls hidden></audio>
-        <div class="flex p-2 px-5" style="transition: 0.3s all">
-            <div class="controls toggler" onclick="togglePlayer()">
-                <pre></pre>
-            </div>
+        class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
+        <div class="relative h-auto w-screen">
             <input type="range" min="0" max="100" value="0" id="playerSlider" />
-            <div class="duration" style="transition: 0.3s all">0</div>
+            <audio id="currentPlayer" src="assets/audio/The End_C418.mp3" class="" controls hidden></audio>
+            <div class="flex p-2 px-5 justify-between" style="transition: 0.3s all">
+                <div class="flex items-center">
+                    <div class="controls toggler" onclick="togglePlayer()">
+                        <pre></pre>
+                    </div>
+                    <div class="duration ms-4" style="transition: 0.3s all">0</div>
+                </div>
+                <div class="flex items-center">
+                    <img src="" alt="" id="thumb" class="h-[5vh] rounded-[5px]">
+                    <div id="title" class="ps-4 end-0" style="text-overflow: ellipsis; text-wrap: nowrap;">name</div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.7/dist/jsmediatags.min.js"></script>
     <script src="assets/libs/script.js"></script>
+    <script src="assets/libs/core.js"></script>
 </body>
 
 </html>
