@@ -16,9 +16,10 @@ input[type="range"] {
 
     -webkit-appearance: none;
     /* Remove default styling */
-    width: 99dvw;
+
+    width: 100dvw;
     height: 1px;
-    /* display: flex; */
+    display: flex;
     background: linear-gradient(90deg, #ca3500 50%, #ddd 50%);
     border-radius: 5px;
     outline: none;

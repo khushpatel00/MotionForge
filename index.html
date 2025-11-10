@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> </title>
-    <!-- <link rel="shortcut icon" href="" type="image/x-icon"> -->
+    <title>MotionForge</title>
+    <link rel="shortcut icon" href="./assets/imgs/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/output.css" />
     <link rel="stylesheet" href="assets/fonts/style.css" />
@@ -16,24 +16,25 @@
         rel="stylesheet" />
 </head>
 
+<header class="bg-orange-700 p-3 relative flex items-center align-middle justify-center">
+    <div class="me-auto my-auto flex items-center">
+        <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
+    </div>
+    <div class="flex items-center px-3 justify-center text-center">
+        <h1 class="font-light text-2xl text-center transition-all duration-500">MotionForge</h1>
+    </div>
+    <div class="ms-auto my-auto flex items-center">
+        <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
+    </div>
+</header>
 <body class="bg-black text-white">
-    <header class="bg-orange-700 p-3 relative flex items-center align-middle justify-center">
-        <div class="me-auto my-auto flex items-center">
-            <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
-        </div>
-        <div class="flex items-center px-3 justify-center text-center">
-            <h1 class="font-light text-2xl text-center transition-all duration-500">MotionForge</h1>
-        </div>
-        <div class="ms-auto my-auto flex items-center">
-            <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
-        </div>
-    </header>
 
-    <div id="playerContainer"
-        class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
-        <div class="relative h-auto w-screen">
+<div id="playerContainer"
+class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
+<div class="relative h-auto w-screen">
             <input type="range" min="0" max="100" value="0" id="playerSlider" />
-            <audio id="currentPlayer" src="assets/audio/The End_C418.mp3" class="" controls hidden></audio>
+            <audio id="currentPlayer" src="assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3 " class="" controls
+                hidden></audio>
             <div class="flex p-2 px-5 justify-between" style="transition: 0.3s all">
                 <div class="flex items-center">
                     <div class="controls toggler" onclick="togglePlayer()">
@@ -42,15 +43,37 @@
                     <div class="duration ms-4" style="transition: 0.3s all">0</div>
                 </div>
                 <div class="flex items-center">
-                    <img src="" alt="" id="thumb" class="h-[5vh] rounded-[5px]">
-                    <div id="title" class="ps-4 end-0" style="text-overflow: ellipsis; text-wrap: nowrap;">name</div>
+                    <img src="#" alt="" id="thumb" class="h-[5vh] thumb rounded-[5px]">
+                    <div class="currentTitle ps-4 end-0" style="text-overflow: ellipsis; text-wrap: wrap;">name</div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- current player -->
+    <section class="bg-blue-950 absolute top-0 left-0 h-screen w-screen">
+        <div class="relative w-full h-full bg-neutral-800">    
+            <img src="#" alt="" id="thumb" class="h-[30vh] thumb rounded-2xl absolute bottom-0 ">
+            <div id="title" class="ps-4 text-5xl  currentTitle end-0" style="text-overflow: ellipsis; text-wrap: nowrap;">name</div>
+        </div>
+    </section>
+
+    <section>
+        <h1 class="text-indigo-200 text-3xl p-3 ps-6">For You</h1>
+
+        <div class="audCard ms-5 bg-neutral-800 w-1/5 hover:w-3/12 rounded-2xl duration-400  rounded-tl-4xl">
+            <img src="assets/imgs/favicon.png" class="bg-neutral-900 me-auto rounded-4xl " alt="">
+
+            <div class="flex justify-around p-2 px-5">
+                <h3 class="audTitle">Aria Math</h3>
+                <h4 class="audArtist text-neutral-400">-C418</h4>
+            </div>
+        </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.7/dist/jsmediatags.min.js"></script>
-    <script src="assets/libs/script.js"></script>
     <script src="assets/libs/core.js"></script>
+    <script src="assets/libs/script.js"></script>
 </body>
 
 </html>
