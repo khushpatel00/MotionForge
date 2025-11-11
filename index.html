@@ -27,13 +27,14 @@
         <i class="ph ph-hamburger px-3 text-2xl my-auto cursor-pointer"></i>
     </div>
 </header>
+
 <body class="bg-black text-white">
 
-<div id="playerContainer"
-class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
-<div class="relative h-auto w-screen">
+    <div id="playerContainer"
+        class="fixed  bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
+        <div class="relative h-auto w-screen">
             <input type="range" min="0" max="100" value="0" id="playerSlider" />
-            <audio id="currentPlayer" src="assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3 " class="" controls
+            <audio id="currentPlayer" src="assets/audio/Millionaire Yo Yo Honey Singh.mp3" class="" controls
                 hidden></audio>
             <div class="flex p-2 px-5 justify-between" style="transition: 0.3s all">
                 <div class="flex items-center">
@@ -49,31 +50,75 @@ class="absolute bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-cent
             </div>
         </div>
     </div>
-    
+
     <!-- current player -->
-    <section class="bg-blue-950 absolute top-0 left-0 h-screen w-screen">
+    
+    <section class="bg-blue-950 absolute top-0 left-0 h-screen hidden w-screen">
         <div class="relative w-full h-full bg-neutral-800">    
             <img src="#" alt="" id="thumb" class="h-[30vh] thumb rounded-2xl absolute bottom-0 ">
             <div id="title" class="ps-4 text-5xl  currentTitle end-0" style="text-overflow: ellipsis; text-wrap: nowrap;">name</div>
         </div>
     </section>
+   
 
-    <section>
+    <section class="">
         <h1 class="text-indigo-200 text-3xl p-3 ps-6">For You</h1>
 
-        <div class="audCard ms-5 bg-neutral-800 w-1/5 hover:w-3/12 rounded-2xl duration-400  rounded-tl-4xl">
-            <img src="assets/imgs/favicon.png" class="bg-neutral-900 me-auto rounded-4xl " alt="">
+        <div id="foryouSlider" class="flex overflow-x-scroll">
 
-            <div class="flex justify-around p-2 px-5">
-                <h3 class="audTitle">Aria Math</h3>
-                <h4 class="audArtist text-neutral-400">-C418</h4>
+            <div
+                class="audCard mx-auto bg-neutral-800 w-1/5 hover:w-3/12 max-h-fit rounded-2xl duration-400  rounded-t-2xl">
+                <div class="hoverCard relative bg-neutral-900 me-auto rounded-4xl rounded-t-2xl">
+                    <img class="-z-1 hoverCardImg absolute top-0 -rotate-12 "
+                        src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="">
+                    <img class="-z-1 hoverCardImg absolute top-0 rotate-12 "
+                        src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="">
+                    <img class="rounded-t-2xl" src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="">
+                </div>
+                <div class="flex justify-around p-2 px-5">
+                    <h3 class="audTitle">Aria Math</h3>
+                    <h4 class="audArtist text-neutral-400">-C418</h4>
+                </div>
             </div>
-        </div>
-    </section>
 
+            <div
+                class="audCard mx-auto bg-neutral-800 w-1/5 hover:w-3/12 max-h-fit rounded-2xl duration-400  rounded-t-2xl">
+                <div class="hoverCard relative bg-neutral-900 me-auto rounded-4xl rounded-t-2xl">
+                    <img class="-z-1 hoverCardImg absolute top-0 -rotate-12 "
+                        src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="">
+                    <img class="-z-1 hoverCardImg absolute top-0 rotate-12 "
+                        src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="">
+                    <img class="rounded-t-2xl" src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="">
+                </div>
+                <div class="flex flex-none justify-around p-2 px-5">
+                    <h3 class="audTitle">Aria Math</h3>
+                    <h4 class="audArtist text-neutral-400">-C418</h4>
+                </div>
+            </div>
+
+            <div
+                class="audCard mx-auto bg-neutral-800 w-1/5 hover:w-3/12 max-h-fit rounded-2xl duration-400  rounded-t-2xl">
+                <div class="hoverCard relative bg-neutral-900 me-auto rounded-4xl rounded-t-2xl">
+                    <img class="-z-1 hoverCardImg absolute top-0 -rotate-12 "
+                        src="assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg" alt="">
+                    <img class="-z-1 hoverCardImg absolute top-0 rotate-12 "
+                        src="assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg" alt="">
+                    <img class="rounded-t-2xl" src="assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg" alt="">
+                </div>
+                <div class="flex justify-around p-2 px-5">
+                    <h3 class="audTitle">Aria Math</h3>
+                    <h4 class="audArtist text-neutral-400">-C418</h4>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.7/dist/jsmediatags.min.js"></script>
     <script src="assets/libs/core.js"></script>
     <script src="assets/libs/script.js"></script>
+    <script src="assets/libs/template.js"></script>
 </body>
 
 </html>

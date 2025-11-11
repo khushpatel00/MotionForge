@@ -5,6 +5,7 @@ let currentPlayer = document.getElementById("currentPlayer");
 let playerContainer = document.getElementById("playerContainer");
 let playerSlider = document.getElementById("playerSlider");
 let audTitle = document.querySelectorAll(".currentTitle");
+let foryouSlider = document.getElementById("foryouSlider");
 
 window.addEventListener("keydown", (e) => {
     if (e.key == " ") togglePlayer();
