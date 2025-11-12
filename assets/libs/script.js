@@ -14,7 +14,9 @@ function refreshUI(){
         const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
         const imageUrl = `data:${picture.format};base64,${btoa(base64String)}`;
         document.getElementsByClassName('thumb')[0].src = imageUrl;
-        // document.getElementsByClassName('thumb')[1].src = imageUrl;
+        document.getElementsByClassName('thumb')[1].src = imageUrl;
+        document.getElementsByClassName('thumb')[2].src = imageUrl;
+        // document.getElementsByClassName('thumb')[3].src = imageUrl;
       } else {
         console.log("No album art found");
       }
@@ -54,8 +56,14 @@ function recommendationCard(albumName, authorName, thumbnail){
                 </div>`;
 }
 
-// foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
+
+foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
+foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
+foryouSlider.innerHTML += recommendationCard('Glory', 'Honey Singh', './assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg');
+foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
+foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
 console.log(collection)
 
 refreshUI();
 document.addEventListener("DOMContentLoaded", refreshUI());
+

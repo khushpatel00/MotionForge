@@ -6,6 +6,8 @@ let playerContainer = document.getElementById("playerContainer");
 let playerSlider = document.getElementById("playerSlider");
 let audTitle = document.querySelectorAll(".currentTitle");
 let foryouSlider = document.getElementById("foryouSlider");
+let fullPlayer   = document.getElementById("playerFullScreen");
+
 
 window.addEventListener("keydown", (e) => {
     if (e.key == " ") togglePlayer();

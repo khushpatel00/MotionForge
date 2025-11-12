@@ -1,22 +1,37 @@
-isFullPlayerOpen = true;
+isFullPlayerOpen = false;
 
-// function toggleFullPlayer() {
-//     if(isFullPlayerOpen){
-//         gsap.to(fullPlayer, {
-//             // opacity: 0,
-//             y: '100%',
-//             display: "none"
-//         })
-//         isFullPlayerOpen = false;
-//     }
-//     else{
-//         gsap.fromTo(fullPlayer, {
-//             y: '100%',
-//             display: "flex"
-//         },{
-//             y: 0,
-//             display: "flex"
-//         })
-//         isFullPlayerOpen = true;
-//     }
-// }
+function toggleFullPlayer() {
+    if(isFullPlayerOpen){
+        gsap.to(fullPlayer, { // closing
+            opacity: 0,
+            y: '100%',
+            display: "none",
+            filter: "blur(10px)",
+        })
+        gsap.to(document.getElementById('fullScreenToggle'), {
+            rotate: -90,
+        })
+        isFullPlayerOpen = false;
+    }
+    else{
+        gsap.fromTo(fullPlayer, {
+            y: '80%',
+            display: "flex",
+            scale: 1.5,
+            filter: "blur(10px)",
+            // opacity: 0,
+        },{ // opening
+            y: 0,
+            display: "flex",
+            scale: 1,
+            filter: "blur(0px)",
+            opacity: 1,
+            duration: 1,
+            ease: "circ.out"
+        })
+        gsap.to(document.getElementById('fullScreenToggle'), {
+            rotate: 90,
+        })
+        isFullPlayerOpen = true;
+    }
+}

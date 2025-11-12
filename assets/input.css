@@ -8,6 +8,18 @@
     /* padding-right: 30px; */
     font-family: "JetBrains Mono", monospace !important;
 }
+.backdropfilter{
+    background-image: url(audio/thumb/Millionaire\ Yo\ Yo\ Honey\ Singh.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.backdropfilter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(30px);
+}
 
 
 

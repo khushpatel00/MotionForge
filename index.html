@@ -31,13 +31,14 @@
 
 <body class="bg-black text-white overflow-x-hidden">
 
+    <!-- original / collapsed -->
     <div id="playerContainer"
-        class="fixed  bottom-0 w-full z-50 flex bg-neutral-500 items-center justify-center">
-        <div class="relative h-auto w-screen">
-            <input type="range" min="0" max="100" value="0" id="playerSlider" class="bottom-0"/>
+        class="fixed  bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
+        <div class="relative h-auto w-screen ">
+            <input type="range" min="0" max="100" value="0" id="playerSlider" />
             <audio id="currentPlayer" src="assets/audio/Millionaire Yo Yo Honey Singh.mp3" class="" controls
                 hidden></audio>
-            <div class="flex p-2 h-screen px-5 justify-between items-end" style="transition: 0.3s all">
+            <div class="md:flex lg:flex xl:flex xxl:flex block p-2 px-5 justify-between" style="transition: 0.3s all">
                 <div class="flex items-center">
                     <div class="controls toggler cursor-pointer" onclick="togglePlayer()">
                         <pre>||</pre>
@@ -46,47 +47,30 @@
                         |><span class="-ms-1.5 ">|</span>
                     </div>
                     <div class="duration ms-4" onclick="toggleFullPlayer()" style="transition: 0.3s all">0</div>
+                    <div class="ms-5 -rotate-90 text-2xl" id="fullScreenToggle" onclick="toggleFullPlayer()">></div>
                 </div>
                 <div class="flex items-center">
+                    
                     <img src="#" alt="" id="thumb" class="h-[5vh] thumb rounded-[5px]">
                     <div class="currentTitle ps-4 end-0" style="text-overflow: ellipsis; text-wrap: wrap;"></div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div id="playerContainer"
-        class="fixed  bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
-        <div class="relative h-auto w-screen">
-            <input type="range" min="0" max="100" value="0" id="playerSlider" />
-            <audio id="currentPlayer" src="assets/audio/Millionaire Yo Yo Honey Singh.mp3" class="" controls
-                hidden></audio>
-            <div class="flex p-2 px-5 justify-between" style="transition: 0.3s all">
-                <div class="flex items-center">
-                    <div class="controls toggler cursor-pointer" onclick="togglePlayer()">
-                        <pre>||</pre>
-                    </div>
-                    <div class="controls ps-3 next cursor-pointer" onclick="togglenext()">
-                        |><span class="-ms-1.5 ">|</span>
-                    </div>
-                    <div class="duration ms-4" onclick="toggleFullPlayer()" style="transition: 0.3s all">0</div>
-                </div>
-                <div class="flex items-center">
-                    <img src="#" alt="" id="thumb" class="h-[5vh] thumb rounded-[5px]">
-                    <div class="currentTitle ps-4 end-0" style="text-overflow: ellipsis; text-wrap: wrap;"></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <!-- current player -->
 
-    <!-- <section id="playerFullScreen" class="bg-blue-950 overflow-x-hidden absolute top-0 left-0 h-screen w-screen">
-        <div class="relative w-full h-full bg-neutral-800">
-            <img src="#" alt="" id="thumb" class="h-[30vh] thumb rounded-2xl absolute top-1/2 left-1/2 -translate-1/2 ">
-            <div id="title" class="ps-4 pt-4 text-5xl font-bold currentTitle end-0"
+    <section id="playerFullScreen" class="bg-blue-950 overflow-x-hidden absolute top-0 left-0 h-screen w-screen z-20 hidden">
+        <div class="relative w-full h-full  backdropfilter">
+            <span class="absolute top-1/2 text-4xl -translate-y-1/2 left-1/5 z-10 ">< </span>
+            <span class="absolute top-1/2 text-4xl -translate-y-1/2 right-1/5 z-10">> </span>
+            <img src="#" alt="" id="thumbNext" class="h-[40vh] thumb rounded-2xl absolute top-1/2 left-1/2 opacity-50 scale-90 -translate-y-1/2 -translate-x-full z-10">
+            <img src="#" alt="" id="thumb" class="h-[40vh] thumb rounded-2xl absolute top-1/2 left-1/2 -translate-1/2 z-30">
+            <img src="assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg" alt="" id="thumbPrev" class="h-[40vh] rounded-2xl absolute top-1/2 left-1/2 opacity-50 scale-90 -translate-y-1/2 z-10">
+            <div id="title" class="ps-4 pt-4 text-5xl font-bold currentTitle start-0 absolute z-10"
                 style="text-overflow: ellipsis; text-wrap: wrap;">name</div>
-        </div>
-    </section> -->
+         </div>
+    </section>
 
 
     <section class="">
@@ -107,5 +91,3 @@
 </body>
 
 </html>
-
-<a href="assets/audio/Dope Shope.mp3"></a>
