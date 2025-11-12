@@ -13,21 +13,26 @@ window.addEventListener("keydown", (e) => {
 
 
 // window.addEventListener("keydown", (e) => {
-//     console.log(e.key);
-// });
-
-playerToggler.textContent = "|>"; // paused / default expression
-
-function togglePlayer() {
-    if (currentPlayer.paused) {
-        currentPlayer.play();
-    } else {
-        currentPlayer.pause();
+    //     console.log(e.key);
+    // });
+    
+    playerToggler.textContent = "|>"; // paused / default expression
+    
+    function togglePlayer() {
+        if (currentPlayer.paused) {
+            currentPlayer.play();
+        } else {
+            currentPlayer.pause();
+        }
     }
-}
-currentPlayer.addEventListener("pause", () => {
-    playerToggler.textContent = "|>"; // paused
-});
+    
+    function togglenext() {
+        currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
+        refreshUI();
+    }
+    currentPlayer.addEventListener("pause", () => {
+        playerToggler.textContent = "|>"; // paused
+    });
 currentPlayer.addEventListener("playing", () => {
     playerToggler.textContent = "||"; // playing
 });

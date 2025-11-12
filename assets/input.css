@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 * {
-    font-family: "poppins" !important;
+    font-family: "poppins" ;
 }
 
 .controls {
@@ -37,13 +37,13 @@
 
 input[type="range"] {
     position: absolute;
-    top: 0;
+    /* top: 0; */
     left: 0;
 
     -webkit-appearance: none;
     /* Remove default styling */
 
-    width: 100dvw;
+    width: 99.9dvw;
     height: 1px;
     display: flex;
     background: linear-gradient(90deg, #ca3500 50%, #ddd 50%);
