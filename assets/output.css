@@ -202,14 +202,8 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
-  .top-1 {
-    top: calc(var(--spacing) * 1);
-  }
   .top-1\/2 {
     top: calc(1/2 * 100%);
-  }
-  .right-1 {
-    right: calc(var(--spacing) * 1);
   }
   .right-1\/5 {
     right: calc(1/5 * 100%);
@@ -219,9 +213,6 @@
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
-  }
-  .left-1 {
-    left: calc(var(--spacing) * 1);
   }
   .left-1\/2 {
     left: calc(1/2 * 100%);
@@ -249,9 +240,6 @@
   }
   .my-auto {
     margin-block: auto;
-  }
-  .-ms-1 {
-    margin-inline-start: calc(var(--spacing) * -1);
   }
   .-ms-1\.5 {
     margin-inline-start: calc(var(--spacing) * -1.5);
@@ -301,6 +289,9 @@
   .h-screen {
     height: 100vh;
   }
+  .max-h-\[8vh\] {
+    max-height: 8vh;
+  }
   .max-h-\[10vh\] {
     max-height: 10vh;
   }
@@ -310,19 +301,8 @@
   .w-screen {
     width: 100vw;
   }
-  .min-w-1 {
-    min-width: calc(var(--spacing) * 1);
-  }
   .min-w-1\/4 {
     min-width: calc(1/4 * 100%);
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .-translate-1 {
-    --tw-translate-x: calc(var(--spacing) * -1);
-    --tw-translate-y: calc(var(--spacing) * -1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-1\/2 {
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
@@ -331,10 +311,6 @@
   }
   .-translate-x-full {
     --tw-translate-x: -100%;
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .-translate-y-1 {
-    --tw-translate-y: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-y-1\/2 {
@@ -355,9 +331,6 @@
   }
   .rotate-12 {
     rotate: 12deg;
-  }
-  .transform {
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .cursor-pointer {
     cursor: pointer;
@@ -380,6 +353,9 @@
   .justify-center {
     justify-content: center;
   }
+  .justify-end {
+    justify-content: flex-end;
+  }
   .overflow-auto {
     overflow: auto;
   }
@@ -398,10 +374,6 @@
   .rounded-t-2xl {
     border-top-left-radius: var(--radius-2xl);
     border-top-right-radius: var(--radius-2xl);
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
   }
   .bg-black {
     background-color: var(--color-black);
@@ -432,6 +404,9 @@
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
+  }
+  .ps-1 {
+    padding-inline-start: calc(var(--spacing) * 1);
   }
   .ps-3 {
     padding-inline-start: calc(var(--spacing) * 3);
@@ -493,22 +468,15 @@
   .text-white {
     color: var(--color-white);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .opacity-50 {
     opacity: 50%;
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
+  .blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .backdrop-filter {
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
@@ -519,6 +487,10 @@
     transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-150 {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
   }
   .duration-400 {
     --tw-duration: 400ms;
@@ -535,9 +507,34 @@
       }
     }
   }
+  .sm\:justify-between {
+    @media (width >= 40rem) {
+      justify-content: space-between;
+    }
+  }
+  .md\:block {
+    @media (width >= 48rem) {
+      display: block;
+    }
+  }
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
+    }
+  }
+  .md\:hidden {
+    @media (width >= 48rem) {
+      display: none;
+    }
+  }
+  .md\:ps-4 {
+    @media (width >= 48rem) {
+      padding-inline-start: calc(var(--spacing) * 4);
+    }
+  }
+  .lg\:block {
+    @media (width >= 64rem) {
+      display: block;
     }
   }
   .lg\:flex {
@@ -545,14 +542,39 @@
       display: flex;
     }
   }
+  .lg\:hidden {
+    @media (width >= 64rem) {
+      display: none;
+    }
+  }
+  .lg\:ps-4 {
+    @media (width >= 64rem) {
+      padding-inline-start: calc(var(--spacing) * 4);
+    }
+  }
+  .xl\:block {
+    @media (width >= 80rem) {
+      display: block;
+    }
+  }
   .xl\:flex {
     @media (width >= 80rem) {
       display: flex;
     }
   }
+  .xl\:hidden {
+    @media (width >= 80rem) {
+      display: none;
+    }
+  }
   .xl\:min-w-2\/12 {
     @media (width >= 80rem) {
       min-width: calc(2/12 * 100%);
+    }
+  }
+  .xl\:ps-4 {
+    @media (width >= 80rem) {
+      padding-inline-start: calc(var(--spacing) * 4);
     }
   }
   .xl\:hover\:min-w-1\/5 {
@@ -575,11 +597,15 @@
   background-image: url(audio/thumb/Millionaire\ Yo\ Yo\ Honey\ Singh.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
 }
 .backdropfilter::after {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
 }
 *::-webkit-scrollbar {
@@ -700,39 +726,9 @@ input[type="range"]::-moz-range-thumb:hover {
   inherits: false;
   initial-value: 1;
 }
-@property --tw-rotate-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-y {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-z {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-y {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
-}
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
 }
 @property --tw-blur {
   syntax: "*";
@@ -787,42 +783,6 @@ input[type="range"]::-moz-range-thumb:hover {
   syntax: "*";
   inherits: false;
 }
-@property --tw-backdrop-blur {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-brightness {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-contrast {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-grayscale {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-hue-rotate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-invert {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-opacity {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-saturate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-sepia {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -836,14 +796,7 @@ input[type="range"]::-moz-range-thumb:hover {
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
-      --tw-rotate-x: initial;
-      --tw-rotate-y: initial;
-      --tw-rotate-z: initial;
-      --tw-skew-x: initial;
-      --tw-skew-y: initial;
-      --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
@@ -857,15 +810,6 @@ input[type="range"]::-moz-range-thumb:hover {
       --tw-drop-shadow-color: initial;
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
-      --tw-backdrop-blur: initial;
-      --tw-backdrop-brightness: initial;
-      --tw-backdrop-contrast: initial;
-      --tw-backdrop-grayscale: initial;
-      --tw-backdrop-hue-rotate: initial;
-      --tw-backdrop-invert: initial;
-      --tw-backdrop-opacity: initial;
-      --tw-backdrop-saturate: initial;
-      --tw-backdrop-sepia: initial;
       --tw-duration: initial;
     }
   }

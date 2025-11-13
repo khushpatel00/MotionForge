@@ -1,13 +1,5 @@
 function refreshUI(){
-  
-
-  let fileName = currentPlayer.src.split('/').pop().split('.').slice(0, -1).toString().replaceAll("%20", " ");
-  if (fileName.length > 30) fileName = fileName.slice(0, 30) + ' . . .';
-  for (let index = 0; index < audTitle.length; index++) {
-    audTitle[index].innerHTML = fileName;
-  };
-  console.log('UI refreshed');
-  jsmediatags.read(currentPlayer.currentSrc, {
+  jsmediatags.read(currentPlayer.src, {    
     onSuccess: tag => {
       const picture = tag.tags.picture;
       if (picture) {
@@ -16,29 +8,21 @@ function refreshUI(){
         document.getElementsByClassName('thumb')[0].src = imageUrl;
         document.getElementsByClassName('thumb')[1].src = imageUrl;
         document.getElementsByClassName('thumb')[2].src = imageUrl;
-        // document.getElementsByClassName('thumb')[3].src = imageUrl;
       } else {
         console.log("No album art found");
       }
     },
     onError: err => console.error(err)
   });
-}
-  
 
-// let albumCard = `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit m-10 hover:min-w-1/3 xl:hover:min-w-1/5">
-//                     <div class="hoverCard relative bg-neutral-900 me-auto rounded-4xl rounded-t-2xl">
-//                         <img class="-z-1 hoverCardImg absolute top-0 -rotate-12 "
-//                             src="${thumbnail}" alt="">
-//                         <img class="-z-1 hoverCardImg absolute top-0 rotate-12 "
-//                             src="${thumbnail}" alt="">
-//                         <img class="rounded-t-2xl" src="${thumbnail}" alt="">
-//                     </div>
-//                     <div class="flex justify-around p-2 px-5">
-//                         <h3 class="audTitle">${albumName}</h3>
-//                         <h4 class="audArtist text-neutral-400">${authorName}</h4>
-//                     </div>
-//                 </div>`;
+  let fileName = currentPlayer.src.split('/').pop().split('.').slice(0, -1).toString().replaceAll("%20", " ");
+  if (fileName.length > 30) fileName = fileName.slice(0, 30) + ' . . .';
+  for (let index = 0; index < audTitle.length; index++) {
+    audTitle[index].innerHTML = fileName;
+  };
+  console.log('UI refreshed');
+}
+
 
 function recommendationCard(albumName, authorName, thumbnail){
     return  `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit m-10 hover:min-w-1/3 xl:hover:min-w-1/5">
@@ -62,8 +46,11 @@ foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './asse
 foryouSlider.innerHTML += recommendationCard('Glory', 'Honey Singh', './assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg');
 foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
 foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
-console.log(collection)
+foryouSlider.innerHTML += recommendationCard('Glory', 'Honey Singh', './assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg');
 
+// togglenext();
+currentPlayer.src = collection[currentPlayIndex++].src;
+currentPlayer.pause();
 refreshUI();
 document.addEventListener("DOMContentLoaded", refreshUI());
 

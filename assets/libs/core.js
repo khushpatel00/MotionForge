@@ -6,8 +6,8 @@ let playerContainer = document.getElementById("playerContainer");
 let playerSlider = document.getElementById("playerSlider");
 let audTitle = document.querySelectorAll(".currentTitle");
 let foryouSlider = document.getElementById("foryouSlider");
-let fullPlayer   = document.getElementById("playerFullScreen");
-
+let fullPlayer = document.getElementById("playerFullScreen");
+let currentPlayIndex = 0;
 
 window.addEventListener("keydown", (e) => {
     if (e.key == " ") togglePlayer();
@@ -15,26 +15,29 @@ window.addEventListener("keydown", (e) => {
 
 
 // window.addEventListener("keydown", (e) => {
-    //     console.log(e.key);
-    // });
-    
-    playerToggler.textContent = "|>"; // paused / default expression
-    
-    function togglePlayer() {
-        if (currentPlayer.paused) {
-            currentPlayer.play();
-        } else {
-            currentPlayer.pause();
-        }
+//     console.log(e.key);
+// });
+
+playerToggler.textContent = "|>"; // paused / default expression
+
+function togglePlayer() {
+    if (currentPlayer.paused) {
+        currentPlayer.play();
+    } else {
+        currentPlayer.pause();
     }
-    
-    function togglenext() {
-        currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
-        refreshUI();
-    }
-    currentPlayer.addEventListener("pause", () => {
-        playerToggler.textContent = "|>"; // paused
-    });
+}
+
+function togglenext() {
+    if(currentPlayIndex >= collection.length) currentPlayIndex = 0;
+    currentPlayer.src = collection[currentPlayIndex++].src;
+    // currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
+    refreshUI();
+    currentPlayer.play();
+}
+currentPlayer.addEventListener("pause", () => {
+    playerToggler.textContent = "|>"; // paused
+});
 currentPlayer.addEventListener("playing", () => {
     playerToggler.textContent = "||"; // playing
 });
@@ -42,7 +45,7 @@ currentPlayer.addEventListener("playing", () => {
 setTimeout(function () {
     // time stamp before played
     durationContainer.innerHTML = `${formatTime(currentPlayer.currentTime)} / ${formatTime(currentPlayer.duration)}`;
-}, 100); 
+}, 100);
 
 durationContainer.innerHTML = `${formatTime(currentPlayer.currentTime)} / ${formatTime(currentPlayer.duration)}`;
 

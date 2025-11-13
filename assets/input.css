@@ -1,24 +1,43 @@
 @import "tailwindcss";
 
 * {
-    font-family: "poppins" ;
+    font-family: "poppins";
 }
 
 .controls {
     /* padding-right: 30px; */
     font-family: "JetBrains Mono", monospace !important;
 }
-.backdropfilter{
+
+.backdropfilter {
     background-image: url(audio/thumb/Millionaire\ Yo\ Yo\ Honey\ Singh.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    -webkit-backdrop-filter: blur(30px);
+    
+    /* Chrome + Firefox (desktop, if enabled) + Safari */
+    backdrop-filter: blur(30px);
+    
+    /* fallback for browsers that don’t support it at all */
+    /* background: rgba(255, 255, 255, 0.1); */
+
 }
 
 .backdropfilter::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+  /* Chrome + Safari (iPad/iOS/macOS) */
+  -webkit-backdrop-filter: blur(30px);
+
+  /* Chrome + Firefox (desktop, if enabled) + Safari */
   backdrop-filter: blur(30px);
+
+  /* fallback for browsers that don’t support it at all */
+  /* background: rgba(255, 255, 255, 0.1); */
 }
 
 
@@ -27,6 +46,7 @@
     height: 5px;
     width: 2px;
 }
+
 *::-webkit-scrollbar-track {
     border-radius: 0px;
     height: 3px;
@@ -44,7 +64,7 @@
 
 *::-webkit-scrollbar-thumb:active {
     background-color: #ffffff;
-} 
+}
 
 
 input[type="range"] {
@@ -118,19 +138,23 @@ input[type="range"]::-moz-range-thumb:hover {
     background: #ca3500;
     transform: scale(1.1);
 }
-.hoverCard{
+
+.hoverCard {
     transition: 0.2s all;
-    .hoverCardImg{
+
+    .hoverCardImg {
         transition: 0.2s all;
         border-radius: 10px;
     }
 }
-.hoverCard:hover{
-    .hoverCardImg:nth-child(1){
+
+.hoverCard:hover {
+    .hoverCardImg:nth-child(1) {
         transform: translateX(15%);
         rotate: 12deg;
     }
-    .hoverCardImg:nth-child(2){
+
+    .hoverCardImg:nth-child(2) {
         transform: translateX(-15%);
         rotate: -12deg;
 
