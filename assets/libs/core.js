@@ -7,6 +7,11 @@ let playerSlider = document.getElementById("playerSlider");
 let audTitle = document.querySelectorAll(".currentTitle");
 let foryouSlider = document.getElementById("foryouSlider");
 let fullPlayer = document.getElementById("playerFullScreen");
+let thumbCurrent = document.getElementById("thumbCurrent");
+let thumbPrev = document.getElementById("thumbPrev");
+let thumbNext = document.getElementById("thumbNext");
+
+
 let currentPlayIndex = 0;
 
 window.addEventListener("keydown", (e) => {
@@ -26,14 +31,16 @@ function togglePlayer() {
     } else {
         currentPlayer.pause();
     }
+    // switchThumbNext();
 }
 
 function togglenext() {
-    if(currentPlayIndex >= collection.length) currentPlayIndex = 0;
     currentPlayer.src = collection[currentPlayIndex++].src;
+    if(currentPlayIndex >= collection.length) currentPlayIndex = 0;
     // currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
     refreshUI();
     currentPlayer.play();
+    switchThumbNext();
 }
 currentPlayer.addEventListener("pause", () => {
     playerToggler.textContent = "|>"; // paused
