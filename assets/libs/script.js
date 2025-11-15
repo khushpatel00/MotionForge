@@ -8,7 +8,7 @@ function refreshUI(){
         const imageUrl = `data:${picture.format};base64,${btoa(base64String)}`;
         document.getElementsByClassName('thumb')[0].src = imageUrl;
         document.getElementsByClassName('thumb')[1].src = imageUrl;
-        document.getElementsByClassName('thumb')[2].src = imageUrl;
+        document.querySelector('.thumbCurrent').src = imageUrl;
       } else {
         console.log("No album art found");
       }
@@ -33,7 +33,7 @@ function renderNextThumb(){
       if (picture) {
         const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
         const imageUrl = `data:${picture.format};base64,${btoa(base64String)}`;
-        document.getElementById('thumbNext').src = imageUrl;
+        document.getElementsByClassName('thumbNext').src = imageUrl;
       } else {
         console.log("No album art found");
       }
@@ -71,8 +71,14 @@ currentPlayer.src = collection[currentPlayIndex++].src;
 currentPlayer.pause();
 refreshUI();
 document.addEventListener("DOMContentLoaded", refreshUI());
+// function switchThumbNext(){
+//   thumbPrev.src = thumbCurrent.src;
+//   thumbCurrent.src = thumbNext.src;
+//   thumbNext.src = '#';
+// }                     
 function switchThumbNext(){
-  thumbPrev.src = thumbCurrent.src;
-  thumbCurrent.src = thumbNext.src;
-  thumbNext.src = '#';
+  temp = thumbPrev.className
+  thumbPrev.className = thumbNext.className
+  thumbNext.className = thumbCurrent.className;
+  thumbCurrent.className = temp;
 }                     
