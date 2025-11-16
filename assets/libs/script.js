@@ -1,5 +1,4 @@
 function refreshUI(){
-  console.log(currentPlayer.src)
   jsmediatags.read(currentPlayer.src, {    
     onSuccess: tag => {
       const picture = tag.tags.picture;
@@ -8,39 +7,22 @@ function refreshUI(){
         const imageUrl = `data:${picture.format};base64,${btoa(base64String)}`;
         document.getElementsByClassName('thumb')[0].src = imageUrl;
         document.getElementsByClassName('thumb')[1].src = imageUrl;
-        document.querySelector('.thumbCurrent').src = imageUrl;
+        document.getElementsByClassName('thumb')[2].src = imageUrl;
       } else {
         console.log("No album art found");
       }
     },
     onError: err => console.error(err)
   });
-
 
   let fileName = currentPlayer.src.split('/').pop().split('.').slice(0, -1).toString().replaceAll("%20", " ");
   if (fileName.length > 30) fileName = fileName.slice(0, 30) + ' . . .';
   for (let index = 0; index < audTitle.length; index++) {
     audTitle[index].innerHTML = fileName;
   };
-  // console.log('UI refreshed');
-  renderNextThumb();
+  console.log('UI refreshed');
 }
-function renderNextThumb(){
-  console.log(window.location.href.replace("/index.html", "")+collection[currentPlayIndex].src.replaceAll(' ', '%20'))
-  jsmediatags.read(window.location.href.replace("/index.html", "")+collection[currentPlayIndex].src.replaceAll(' ', '%20'), {    
-    onSuccess: tag => {
-      const picture = tag.tags.picture;
-      if (picture) {
-        const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
-        const imageUrl = `data:${picture.format};base64,${btoa(base64String)}`;
-        document.getElementsByClassName('thumbNext').src = imageUrl;
-      } else {
-        console.log("No album art found");
-      }
-    },
-    onError: err => console.error(err)
-  });
-}
+
 
 function recommendationCard(albumName, authorName, thumbnail){
     return  `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit m-10 hover:min-w-1/3 xl:hover:min-w-1/5">
@@ -71,14 +53,4 @@ currentPlayer.src = collection[currentPlayIndex++].src;
 currentPlayer.pause();
 refreshUI();
 document.addEventListener("DOMContentLoaded", refreshUI());
-// function switchThumbNext(){
-//   thumbPrev.src = thumbCurrent.src;
-//   thumbCurrent.src = thumbNext.src;
-//   thumbNext.src = '#';
-// }                     
-function switchThumbNext(){
-  temp = thumbPrev.className
-  thumbPrev.className = thumbNext.className
-  thumbNext.className = thumbCurrent.className;
-  thumbCurrent.className = temp;
-}                     
+

@@ -1,4 +1,4 @@
-isFullPlayerOpen = true;
+isFullPlayerOpen = false;
 
 function toggleFullPlayer() {
     if (isFullPlayerOpen) {
@@ -38,5 +38,3 @@ function toggleFullPlayer() {
         refreshUI();
     }, 1000);
 }
-// console.log(window.location.href.replace("/index.html", "")+collection[1].src);
-
