@@ -1,5 +1,6 @@
 function refreshUI(){
-  // console.log(currentPlayer.src)
+  console.log(currentPlayer.src)
+  
   jsmediatags.read(currentPlayer.src, {    
     onSuccess: tag => {
       const picture = tag.tags.picture;
@@ -24,6 +25,7 @@ function refreshUI(){
   };
   // console.log('UI refreshed');
   renderNextThumb();
+  // document.querySelector('.thumbCurrent').src = document.querySelector('.thumbNext').src;
 }
 function renderNextThumb(){
   webLocation = window.location.href;
@@ -34,8 +36,8 @@ function renderNextThumb(){
       const picture = tag.tags.picture;
       if (picture) {
         const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
-        const imageUrl = `data:${picture.format};base64,${btoa(base64String)}`;
-        document.getElementsByClassName('thumbNext').src = imageUrl;
+        const imageUrlNext = `data:${picture.format};base64,${btoa(base64String)}`;
+        document.querySelector('.thumbNext').src = imageUrlNext;
       } else {
         console.log("No album art found");
       }
@@ -45,7 +47,7 @@ function renderNextThumb(){
 }
 
 function recommendationCard(albumName, authorName, thumbnail){
-    return  `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit m-10 hover:min-w-1/3 xl:hover:min-w-1/5">
+    return  `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit my-10 mx-3 lg:mx-7 md:mx-5">
                     <div class="hoverCard relative bg-neutral-900 me-auto rounded-4xl rounded-t-2xl">
                         <img class="-z-1 hoverCardImg absolute top-0 -rotate-12 "
                             src="${thumbnail}" alt="">
@@ -54,8 +56,8 @@ function recommendationCard(albumName, authorName, thumbnail){
                         <img class="rounded-t-2xl" src="${thumbnail}" alt="">
                     </div>
                     <div class="flex justify-around p-2 px-5">
-                        <h3 class="audTitle">${albumName}</h3>
-                        <h4 class="audArtist text-neutral-400">${authorName}</h4>
+                        <h3 class="audTitle text-xs sm:text-sm md:text-[16px] lg:text-lg  ">${albumName}</h3>
+                        <h4 class="audArtist text-xs sm:text-sm md:text-[16px] lg:text-lg   text-neutral-400">${authorName}</h4>
                     </div>
                 </div>`;
 }
