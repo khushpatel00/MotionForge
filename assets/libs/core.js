@@ -1,4 +1,3 @@
-"use strict";
 let playerToggler = document.querySelector(".toggler");
 let durationContainer = document.querySelector(".duration");
 let currentPlayer = document.getElementById("currentPlayer");

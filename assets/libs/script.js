@@ -1,5 +1,5 @@
 function refreshUI(){
-  console.log(currentPlayer.src)
+  // console.log(currentPlayer.src)
   jsmediatags.read(currentPlayer.src, {    
     onSuccess: tag => {
       const picture = tag.tags.picture;
@@ -17,7 +17,7 @@ function refreshUI(){
   });
 
 
-  let fileName = currentPlayer.src.split('/').pop().split('.').slice(0, -1).toString().replaceAll("%20", " ");
+  let fileName = currentPlayer.src.split('/').pop().split('.').slice(0, -1).toString().replaceAll("_", " ").replaceAll("  ", "_ ");
   if (fileName.length > 30) fileName = fileName.slice(0, 30) + ' . . .';
   for (let index = 0; index < audTitle.length; index++) {
     audTitle[index].innerHTML = fileName;
@@ -26,8 +26,10 @@ function refreshUI(){
   renderNextThumb();
 }
 function renderNextThumb(){
-  console.log(window.location.href.replace("/index.html", "")+collection[currentPlayIndex].src.replaceAll(' ', '%20'))
-  jsmediatags.read(window.location.href.replace("/index.html", "")+collection[currentPlayIndex].src.replaceAll(' ', '%20'), {    
+  webLocation = window.location.href;
+  if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/')
+  console.log(webLocation + collection[currentPlayIndex].src)
+  jsmediatags.read(webLocation + collection[currentPlayIndex].src, {    
     onSuccess: tag => {
       const picture = tag.tags.picture;
       if (picture) {
@@ -77,8 +79,12 @@ document.addEventListener("DOMContentLoaded", refreshUI());
 //   thumbNext.src = '#';
 // }                     
 function switchThumbNext(){
-  temp = thumbPrev.className
-  thumbPrev.className = thumbNext.className
-  thumbNext.className = thumbCurrent.className;
-  thumbCurrent.className = temp;
+  // temp = thumbPrev.className
+  // thumbPrev.className = thumbNext.className
+  // thumbNext.className = thumbCurrent.className;
+  // thumbCurrent.className = temp;
+  temp = thumbNext.className;
+  thumbNext.className = thumbCurrent.className
+  thumbCurrent.className = thumbPrev.className;
+  thumbPrev.className = temp;
 }                     
