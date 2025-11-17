@@ -27,7 +27,7 @@ function refreshUI(){
 }
 function renderNextThumb(){
   webLocation = window.location.href;
-  if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/')
+  if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/') + "/";
   console.log(webLocation + collection[currentPlayIndex].src)
   jsmediatags.read(webLocation + collection[currentPlayIndex].src, {    
     onSuccess: tag => {
