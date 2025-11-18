@@ -30,7 +30,6 @@ function refreshUI(){
 function renderNextThumb(){
   webLocation = window.location.href;
   if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/') + "/";
-  console.log(webLocation + collection[currentPlayIndex].src)
   jsmediatags.read(webLocation + collection[currentPlayIndex].src, {    
     onSuccess: tag => {
       const picture = tag.tags.picture;
@@ -38,6 +37,25 @@ function renderNextThumb(){
         const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
         const imageUrlNext = `data:${picture.format};base64,${btoa(base64String)}`;
         document.querySelector('.thumbNext').src = imageUrlNext;
+      } else {
+        console.log("No album art found");
+      }
+    },
+    onError: err => console.error(err)
+  });
+}
+function renderPrevThumb(){
+  webLocation = window.location.href;
+  if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/') + "/";
+
+  jsmediatags.read(webLocation + collection[currentPlayIndex - 1].src, {    
+    onSuccess: tag => {
+      const picture = tag.tags.picture;
+      if (picture) {
+        const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
+        const imageUrlPrev = `data:${picture.format};base64,${btoa(base64String)}`;
+        document.querySelector('.thumbPrev').src = imageUrlPrev;
+        document.querySelector('.thumbPrev').innerHTML = 'prev thumb'
       } else {
         console.log("No album art found");
       }
@@ -89,4 +107,13 @@ function switchThumbNext(){
   thumbNext.className = thumbCurrent.className
   thumbCurrent.className = thumbPrev.className;
   thumbPrev.className = temp;
+}                     
+function switchThumbPrev(){
+  // temp = thumbPrev.className
+  // thumbPrev.className = thumbNext.className
+  // thumbNext.className = thumbCurrent.className;
+  temp = thumbPrev.className;
+  thumbPrev.className = thumbCurrent.className;
+  thumbCurrent.className = thumbNext.className;
+  thumbNext.className = temp;
 }                     

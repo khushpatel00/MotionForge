@@ -1,4 +1,4 @@
-isFullPlayerOpen = false;
+isFullPlayerOpen = true;
 
 function toggleFullPlayer() {
     if (isFullPlayerOpen) {

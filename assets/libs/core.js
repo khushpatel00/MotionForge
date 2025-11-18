@@ -1,3 +1,4 @@
+"use strict";
 let playerToggler = document.querySelector(".toggler");
 let durationContainer = document.querySelector(".duration");
 let currentPlayer = document.getElementById("currentPlayer");
@@ -32,15 +33,27 @@ function togglePlayer() {
     }
     // switchThumbNext();
 }
-
 function togglenext() {
-    currentPlayer.src = collection[currentPlayIndex++].src;
     if(currentPlayIndex >= collection.length) currentPlayIndex = 0;
+    currentPlayer.src = collection[currentPlayIndex].src;
     // currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
+    currentPlayIndex++;
     refreshUI();
     currentPlayer.play();
     switchThumbNext();
 }
+function toggleprev() {
+    currentPlayIndex-- ;
+    if(currentPlayIndex < 0) currentPlayIndex = collection.length - 1;
+    console.log('index', currentPlayIndex);
+    currentPlayer.src = collection[currentPlayIndex].src;
+    // currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
+    refreshUI();
+    currentPlayer.play();
+    renderPrevThumb();
+    switchThumbPrev();
+}
+
 currentPlayer.addEventListener("pause", () => {
     playerToggler.textContent = "|>"; // paused
 });
@@ -71,6 +84,8 @@ currentPlayer.addEventListener("timeupdate", () => {
     durationContainer.innerHTML = `${formatTime(currentPlayer.currentTime)} / ${formatTime(currentPlayer.duration)}`;
     playerSlider.value = Math.floor(currentPlayer.currentTime);
     playerSlider.max = Math.floor(currentPlayer.duration);
+
+    if(currentPlayer.currentTime == currentPlayer.duration) togglenext();
 });
 playerSlider.addEventListener("input", () => {
     currentPlayer.currentTime = playerSlider.value;

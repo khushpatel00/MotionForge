@@ -34,7 +34,7 @@
     <!-- original / collapsed -->
     <div id="playerContainer"
         class="fixed bottom-0 w-full max-h-[10vh] z-50 flex bg-neutral-500 items-center justify-center">
-        <div class="relative h-auto w-screen flex md:block lg:block xl:block xxl:block sm:justify-between">
+        <div class="relative h-auto w-screen flex md:block lg:block xl:block xxl:block sm:justify-between" style="justify-content: space-between;">
             <input type="range" min="0" max="100" value="0" id="playerSlider" />
             <audio id="currentPlayer" src="#" class="" controls
                 hidden></audio>
@@ -56,15 +56,15 @@
                 </div>
             </div>
 
-            <div class="flex md:hidden lg:hidden xl:hidden xxl:hidden  justify-end my-auto px-5"><img src="#" alt="" id="thumbLarger" class="max-h-[8vh] thumb rounded-[5px]"></div >
+            <div class="flex md:hidden lg:hidden xl:hidden xxl:hidden justify-end my-auto px-5"><img src="#" alt="" id="thumbLarger" class="max-h-[8vh] thumb rounded-[5px]"></div >
         </div>
     </div>
 
     <!-- current player -->
 
-    <section id="playerFullScreen" class="bg-blue-950 overflow-x-hidden absolute top-0 left-0 h-screen w-screen z-20 hidden">
+    <section id="playerFullScreen" class="bg-blue-950 overflow-x-hidden absolute top-0 left-0 h-screen w-screen z-20">
         <div class="relative w-full h-full  backdropfilter">
-            <span class="absolute top-1/2 text-4xl -translate-y-1/2 left-1/5 z-10 ">< </span>
+            <span onclick="toggleprev()" class="absolute top-1/2 text-4xl -translate-y-1/2 left-1/5 z-10 ">< </span>
             <span onclick="togglenext()" class="absolute top-1/2 text-4xl -translate-y-1/2 right-1/5 z-10">> </span>
             <img style="transition: 0.2s;" src="#" alt="" id="thumbCurrent" class="h-[40vh] pointer-events-none  thumbCurrent rounded-2xl absolute top-1/2 left-1/2 -translate-1/2 z-30">
             <img style="transition: 0.2s;" src="#" alt="" id="thumbPrev" class="h-[40vh] pointer-events-none  thumbPrev rounded-2xl absolute top-1/2 left-1/2 opacity-50 scale-90 -translate-y-1/2 -translate-x-full z-10">
