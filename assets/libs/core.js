@@ -10,6 +10,7 @@ let fullPlayer = document.getElementById("playerFullScreen");
 let thumbCurrent = document.getElementById("thumbCurrent");
 let thumbPrev = document.getElementById("thumbPrev");
 let thumbNext = document.getElementById("thumbNext");
+let backdropFilter = document.querySelector('.backdropfilter');
 
 
 let currentPlayIndex = 0;
@@ -31,27 +32,13 @@ function togglePlayer() {
     } else {
         currentPlayer.pause();
     }
-    // switchThumbNext();
 }
 function togglenext() {
     if(currentPlayIndex >= collection.length) currentPlayIndex = 0;
-    currentPlayer.src = collection[currentPlayIndex].src;
-    // currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
-    currentPlayIndex++;
+    currentPlayer.src = collection[currentPlayIndex++].src;
     refreshUI();
     currentPlayer.play();
     switchThumbNext();
-}
-function toggleprev() {
-    currentPlayIndex-- ;
-    if(currentPlayIndex < 0) currentPlayIndex = collection.length - 1;
-    console.log('index', currentPlayIndex);
-    currentPlayer.src = collection[currentPlayIndex].src;
-    // currentPlayer.src = 'assets/audio/Blue Eyes_Yo Yo Honey Singh.mp3';
-    refreshUI();
-    currentPlayer.play();
-    renderPrevThumb();
-    switchThumbPrev();
 }
 
 currentPlayer.addEventListener("pause", () => {
@@ -91,3 +78,4 @@ playerSlider.addEventListener("input", () => {
     currentPlayer.currentTime = playerSlider.value;
     playerSlider.max = Math.floor(currentPlayer.duration);
 });
+

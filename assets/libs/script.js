@@ -1,7 +1,7 @@
-function refreshUI(){
-  console.log(currentPlayer.src)
-  
-  jsmediatags.read(currentPlayer.src, {    
+function refreshUI() {
+  // console.log(currentPlayer.src)
+
+  jsmediatags.read(currentPlayer.src, {
     onSuccess: tag => {
       const picture = tag.tags.picture;
       if (picture) {
@@ -10,6 +10,11 @@ function refreshUI(){
         document.getElementsByClassName('thumb')[0].src = imageUrl;
         document.getElementsByClassName('thumb')[1].src = imageUrl;
         document.querySelector('.thumbCurrent').src = imageUrl;
+        backdropFilter.style.background = `url(${imageUrl})`
+        backdropFilter.style.backgroundSize = `cover`
+        backdropFilter.style.backgroundRepeat = `no-repeat`
+
+        
       } else {
         console.log("No album art found");
       }
@@ -25,12 +30,18 @@ function refreshUI(){
   };
   // console.log('UI refreshed');
   renderNextThumb();
-  // document.querySelector('.thumbCurrent').src = document.querySelector('.thumbNext').src;
 }
-function renderNextThumb(){
+function renderNextThumb() {
   webLocation = window.location.href;
-  if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/') + "/";
-  jsmediatags.read(webLocation + collection[currentPlayIndex].src, {    
+  if (window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/') + '/';
+
+  try {
+    console.log(webLocation + collection[currentPlayIndex].src);
+  }
+  catch (e) {
+    currentPlayIndex = 0;
+  }
+  jsmediatags.read(webLocation + collection[currentPlayIndex].src, {
     onSuccess: tag => {
       const picture = tag.tags.picture;
       if (picture) {
@@ -44,28 +55,8 @@ function renderNextThumb(){
     onError: err => console.error(err)
   });
 }
-function renderPrevThumb(){
-  webLocation = window.location.href;
-  if(window.location.href.split('/').pop() == 'index.html') webLocation = window.location.href.split('/').slice(0, -1).join('/') + "/";
-
-  jsmediatags.read(webLocation + collection[currentPlayIndex - 1].src, {    
-    onSuccess: tag => {
-      const picture = tag.tags.picture;
-      if (picture) {
-        const base64String = picture.data.map(b => String.fromCharCode(b)).join('');
-        const imageUrlPrev = `data:${picture.format};base64,${btoa(base64String)}`;
-        document.querySelector('.thumbPrev').src = imageUrlPrev;
-        document.querySelector('.thumbPrev').innerHTML = 'prev thumb'
-      } else {
-        console.log("No album art found");
-      }
-    },
-    onError: err => console.error(err)
-  });
-}
-
-function recommendationCard(albumName, authorName, thumbnail){
-    return  `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit my-10 mx-3 lg:mx-7 md:mx-5">
+function recommendationCard(albumName, authorName, thumbnail) {
+  return `<div class="audCard bg-neutral-800 rounded-2xl duration-400 rounded-t-2xl min-w-1/4 xl:min-w-2/12 h-fit my-10 mx-3 lg:mx-7 md:mx-5">
                     <div class="hoverCard relative bg-neutral-900 me-auto rounded-4xl rounded-t-2xl">
                         <img class="-z-1 hoverCardImg absolute top-0 -rotate-12 "
                             src="${thumbnail}" alt="">
@@ -88,32 +79,14 @@ foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './asse
 foryouSlider.innerHTML += recommendationCard('Blue Eyes', 'Honey Singh', './assets/audio/thumb/Blue Eyes_Yo Yo Honey Singh.jpg');
 foryouSlider.innerHTML += recommendationCard('Glory', 'Honey Singh', './assets/audio/thumb/Millionaire Yo Yo Honey Singh.jpg');
 
-// togglenext();
 currentPlayer.src = collection[currentPlayIndex++].src;
 currentPlayer.pause();
-refreshUI();
+// refreshUI();
 document.addEventListener("DOMContentLoaded", refreshUI());
-// function switchThumbNext(){
-//   thumbPrev.src = thumbCurrent.src;
-//   thumbCurrent.src = thumbNext.src;
-//   thumbNext.src = '#';
-// }                     
-function switchThumbNext(){
-  // temp = thumbPrev.className
-  // thumbPrev.className = thumbNext.className
-  // thumbNext.className = thumbCurrent.className;
-  // thumbCurrent.className = temp;
+                 
+function switchThumbNext() {
   temp = thumbNext.className;
   thumbNext.className = thumbCurrent.className
   thumbCurrent.className = thumbPrev.className;
   thumbPrev.className = temp;
-}                     
-function switchThumbPrev(){
-  // temp = thumbPrev.className
-  // thumbPrev.className = thumbNext.className
-  // thumbNext.className = thumbCurrent.className;
-  temp = thumbPrev.className;
-  thumbPrev.className = thumbCurrent.className;
-  thumbCurrent.className = thumbNext.className;
-  thumbNext.className = temp;
-}                     
+}
